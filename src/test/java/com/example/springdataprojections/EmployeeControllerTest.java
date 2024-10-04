@@ -32,7 +32,6 @@ public class EmployeeControllerTest {
     @MockBean
     private EmployeeService employeeService;
     private Employee employee;
-    private Department department;
 
     @BeforeEach
     void setUp() {
@@ -78,7 +77,6 @@ public class EmployeeControllerTest {
 
     @Test
     void testGetEmployeeById() throws Exception {
-
 
 
         Mockito.when(employeeService.getEmployeeById(1L)).thenReturn(employee);
@@ -140,7 +138,7 @@ public class EmployeeControllerTest {
 
         Mockito.when(employeeService.getAllEmployeeProjections())
                 .thenReturn(List.of(employeeProjection));
-        
+
         mockMvc.perform(get("/api/employee/projections"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].fullName").value("Иван Иванов"))
